@@ -30,18 +30,23 @@ async def button(update: Update, context: CallbackContext) -> None:
     choice = query.data
 
     if choice == 'telegram_premium':
-        descriprion = "Telegram Premium: Отримайте доступ до ексклюзивних функцій, таких як завантаження файлів великого розміру, додаткові реакції на повідомлення, а також можливість використовувати спеціальні аватари."
-        await query.edit_message_text(text=f"Ви вибрали Telegram Premium. Ціна: $4.99\n\n{descriprion}")
+        description = "Telegram Premium: Отримайте доступ до ексклюзивних функцій, таких як завантаження файлів великого розміру, додаткові реакції на повідомлення, а також можливість використовувати спеціальні аватари."
+        image_url = "https://th.bing.com/th/id/OIP.0ekVtvo0UbK6yjwOZZZSUAHaEt?w=280&h=180&c=7&r=0&o=5&pid=1.7"  
+        await query.edit_message_text(text=f"Ви вибрали Telegram Premium. Ціна: $4.99\n\n{description}\n\n[Зображення]({image_url})", parse_mode='Markdown')
     elif choice == 'discord_nitro':
-        descriprion = "Discord Nitro: Насолоджуйтесь покращеним досвідом спілкування з функціями, такими як використання анімованих емодзі, завантаження більших файлів, та можливість використовувати різні ніки на різних серверах."
-        await query.edit_message_text(text=f"Ви вибрали Discord Nitro. Ціна: $9.99\n\n{descriprion}")
+        description = "Discord Nitro: Насолоджуйтесь покращеним досвідом спілкування з функціями, такими як використання анімованих емодзі, завантаження більших файлів, та можливість використовувати різні ніки на різних серверах."
+        image_url = "https://example.com/discord_nitro_image.jpg"  
+        await query.edit_message_text(text=f"Ви вибрали Discord Nitro. Ціна: $9.99\n\n{description}\n\n[Зображення]({image_url})", parse_mode='Markdown')
     elif choice == 'game_cheats':
-        descriprion = "Чіти на ігри: Отримайте ексклюзивні чіти для ваших улюблених ігор, що допоможуть вам досягти нових рівнів і відкрити приховані можливості."
-        await query.edit_message_text(text=f"Ви вибрали Чіти на ігри. Ціна: $19.99\n\n{descriprion}")
+        description = "Чіти на ігри: Отримайте ексклюзивні чіти для ваших улюблених ігор, що допоможуть вам досягти нових рівнів і відкрити приховані можливості."
+        image_url = "https://example.com/game_cheats_image.jpg"  
+        await query.edit_message_text(text=f"Ви вибрали Чіти на ігри. Ціна: $19.99\n\n{description}\n\n[Зображення]({image_url})", parse_mode='Markdown')
+
 
     keyboard = [
-        [InlineKeyboardButton("Отримати товар", url='https://www.donationalerts.com/r/yazva1810')]
+        [InlineKeyboardButton("Отримати товар", url='http://surl.li/fhvtiy')]
     ]
+
     reply_markup = InlineKeyboardMarkup(keyboard)
     await query.edit_message_reply_markup(reply_markup=reply_markup)
 
