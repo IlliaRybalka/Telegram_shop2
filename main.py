@@ -30,13 +30,20 @@ async def button(update: Update, context: CallbackContext) -> None:
     choice = query.data
 
     if choice == 'telegram_premium':
-        await query.edit_message_text(text="Ви вибрали Telegram Premium. Ціна: $4.99")
+        descriprion = "Telegram Premium: Отримайте доступ до ексклюзивних функцій, таких як завантаження файлів великого розміру, додаткові реакції на повідомлення, а також можливість використовувати спеціальні аватари."
+        await query.edit_message_text(text=f"Ви вибрали Telegram Premium. Ціна: $4.99\n\n{descriprion}")
     elif choice == 'discord_nitro':
-        await query.edit_message_text(text="Ви вибрали Discord Nitro. Ціна: $9.99")
+        descriprion = "Discord Nitro: Насолоджуйтесь покращеним досвідом спілкування з функціями, такими як використання анімованих емодзі, завантаження більших файлів, та можливість використовувати різні ніки на різних серверах."
+        await query.edit_message_text(text=f"Ви вибрали Discord Nitro. Ціна: $9.99\n\n{descriprion}")
     elif choice == 'game_cheats':
-        await query.edit_message_text(text="Ви вибрали Чіти на ігри. Ціна: $19.99")
+        descriprion = "Чіти на ігри: Отримайте ексклюзивні чіти для ваших улюблених ігор, що допоможуть вам досягти нових рівнів і відкрити приховані можливості."
+        await query.edit_message_text(text=f"Ви вибрали Чіти на ігри. Ціна: $19.99\n\n{descriprion}")
 
-    await show_prices(update, context)
+    keyboard = [
+        [InlineKeyboardButton("Отримати товар", url='https://www.donationalerts.com/r/yazva1810')]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    await query.edit_message_reply_markup(reply_markup=reply_markup)
 
 def main() -> None:
     application = Application.builder().token(TOKEN).build()
