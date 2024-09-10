@@ -35,17 +35,20 @@ async def button(update: Update, context: CallbackContext) -> None:
         'telegram_premium': {
             'description': "Telegram Premium: Отримайте доступ до ексклюзивних функцій, таких як завантаження файлів великого розміру, додаткові реакції на повідомлення, а також можливість використовувати спеціальні аватари.",
             'price': "$4.99",
-            'image_url': "https://th.bing.com/th/id/OIP.0ekVtvo0UbK6yjwOZZZSUAHaEt?w=280&h=180&c=7&r=0&o=5&pid=1.7"
+            'image_url': "https://th.bing.com/th/id/OIP.0ekVtvo0UbK6yjwOZZZSUAHaEt?w=280&h=180&c=7&r=0&o=5&pid=1.7",
+            'payment_url': "https://illyarybalka08.wixsite.com/-site"
         },
         'discord_nitro': {
             'description': "Discord Nitro: Насолоджуйтесь покращеним досвідом спілкування з функціями, такими як використання анімованих емодзі, завантаження більших файлів, та можливість використовувати різні ніки на різних серверах.",
             'price': "$9.99",
-            'image_url': "https://example.com/discord_nitro_image.jpg"
+            'image_url': "https://example.com/discord_nitro_image.jpg",
+            'payment_url': "https://illyarybalka08.wixsite.com/-site"
         },
         'game_cheats': {
             'description': "Чіти на ігри: Отримайте ексклюзивні чіти для ваших улюблених ігор, що допоможуть вам досягти нових рівнів і відкрити приховані можливості.",
             'price': "$19.99",
-            'image_url': "https://example.com/game_cheats_image.jpg"
+            'image_url': "https://example.com/game_cheats_image.jpg",
+            'payment_url': "https://illyarybalka08.wixsite.com/-site"
         }
     }
 
@@ -58,7 +61,7 @@ async def button(update: Update, context: CallbackContext) -> None:
         )
 
     keyboard = [
-        [InlineKeyboardButton("Отримати товар", url='http://surl.li/fhvtiy')],
+        [InlineKeyboardButton("Отримати товар", url=selected['payment_url'])],
         [InlineKeyboardButton("Назад", callback_data='back')]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
