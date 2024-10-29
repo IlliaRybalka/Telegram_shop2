@@ -1,10 +1,10 @@
 from telegram import Update
-from telegram.ext import CallbackContext
+from telegram.ext import ContextTypes
 from datetime import datetime
 from constants import PRODUCT_CHOICES
 from database import db
 
-async def handle_purchase(update: Update, context: CallbackContext, product_choice: str) -> None:
+async def handle_purchase(update: Update, context: ContextTypes.DEFAULT_TYPE, product_choice: str) -> None:
     user_id = update.callback_query.from_user.id
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 

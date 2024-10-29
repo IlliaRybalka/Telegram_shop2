@@ -1,10 +1,10 @@
 from telegram import Update
-from telegram.ext import CallbackContext
-from .history_handler import view_history
-from .show_prices_handler import show_prices
-from .start_handler import start
+from telegram.ext import ContextTypes
+from handlers.history_handler import view_history
+from handlers.show_prices_handler import show_prices
+from handlers.start_handler import start
 
-async def message_handler(update: Update, context: CallbackContext) -> None:
+async def message_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     message_text = update.message.text
     if message_text == "Історія покупок":
         await view_history(update, context)

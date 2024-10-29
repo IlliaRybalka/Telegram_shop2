@@ -1,3 +1,4 @@
+import logging
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters
 from constants import TOKEN
 from handlers.start_handler import start
@@ -6,6 +7,13 @@ from handlers.button_handler import button_handler
 from handlers.message_handler import message_handler
 
 def main() -> None:
+    # Налаштування логування
+    logging.basicConfig(
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        level=logging.INFO
+    )
+    logger = logging.getLogger(__name__)
+
     application = Application.builder().token(TOKEN).build()
 
     # Обробники команд
@@ -18,6 +26,7 @@ def main() -> None:
     # Обробник текстових повідомлень
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message_handler))
 
+    # Запуск бота
     application.run_polling()
 
 if __name__ == '__main__':

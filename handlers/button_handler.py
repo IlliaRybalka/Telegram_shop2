@@ -1,11 +1,11 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import CallbackContext
+from telegram.ext import ContextTypes
 from constants import PRODUCT_CHOICES
-from .purchase_handler import handle_purchase
-from .show_prices_handler import show_prices
-from .start_handler import start
+from handlers.purchase_handler import handle_purchase
+from handlers.show_prices_handler import show_prices
+from handlers.start_handler import start
 
-async def button_handler(update: Update, context: CallbackContext) -> None:
+async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     query = update.callback_query
     data = query.data
     await query.answer()

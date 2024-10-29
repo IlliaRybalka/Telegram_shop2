@@ -1,9 +1,9 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import CallbackContext
+from telegram.ext import ContextTypes
 from database import db, UserQuery
 from constants import PRODUCT_CHOICES
 
-async def view_history(update: Update, context: CallbackContext) -> None:
+async def view_history(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     user_id = update.effective_user.id
     purchases = db.search(UserQuery.user_id == user_id)
 

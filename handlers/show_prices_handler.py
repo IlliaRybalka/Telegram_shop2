@@ -1,8 +1,8 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import CallbackContext
+from telegram.ext import ContextTypes
 from constants import PRODUCT_CHOICES
 
-async def show_prices(update: Update, context: CallbackContext) -> None:
+async def show_prices(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     options = [
         (f"{info['name']} - {info['price']}", key) for key, info in PRODUCT_CHOICES.items()
     ]
