@@ -8,4 +8,7 @@ async def show_prices(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
     ]
     keyboard = [[InlineKeyboardButton(text, callback_data=data)] for text, data in options]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text('Оберіть продукт з ціною:', reply_markup=reply_markup)
+
+    # Handle both message and callback query contexts
+    message = update.message or update.callback_query.message
+    await message.reply_text('Оберіть продукт з ціною:', reply_markup=reply_markup)

@@ -7,7 +7,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         [KeyboardButton("Меню")]
     ]
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
-    await update.message.reply_text(
+
+    # Handle both message and callback query contexts
+    message = update.message or update.callback_query.message
+    await message.reply_text(
         'Виберіть опцію або скористайтеся командами з клавіатури:',
         reply_markup=reply_markup
     )

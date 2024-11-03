@@ -11,7 +11,7 @@ async def handle_purchase(update: Update, context: ContextTypes.DEFAULT_TYPE, pr
     if product_choice in PRODUCT_CHOICES:
         selected = PRODUCT_CHOICES[product_choice]
 
-        # Додаємо покупку до бази даних
+        # Add purchase to database
         db.insert({
             'user_id': user_id,
             'product': product_choice,
